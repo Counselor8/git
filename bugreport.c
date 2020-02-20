@@ -287,10 +287,11 @@ static void get_alternates_summary(struct strbuf *alternates_info, int nongit)
 	}
 
 	strbuf_addf(alternates_info,
-		    "%zd alternates found (%zd working, %zd broken)\n",
-		    exists + broken,
-		    exists,
-		    broken);
+		    "%"PRIuMAX" alternates found "
+		    "(%"PRIuMAX" working, %"PRIuMAX" broken)\n",
+		    (uintmax_t)(exists + broken),
+		    (uintmax_t)exists,
+		    (uintmax_t)broken);
 
 	fclose(file);
 	strbuf_release(&alternate);
