@@ -788,8 +788,10 @@ vcxproj:
 	git add -f git/LinkOrCopyBuiltins.targets git-remote-http/LinkOrCopyRemoteHttp.targets
 
 	# Add command-list.h
-	$(MAKE) MSVC=1 SKIP_VCPKG=1 prefix=/mingw64 command-list.h
-	git add -f command-list.h
+	$(MAKE) MSVC=1 SKIP_VCPKG=1 prefix=/mingw64 command-list.h \
+		config-list.h bugreport-config-safelist.h
+	git add -f command-list.h \
+	 	config-list.h bugreport-config-safelist.h
 
 	# Add scripts
 	rm -f perl/perl.mak
